@@ -1,2 +1,415 @@
-@use "../global/" as g;
+@use "../global/" as *;
 
+html {
+  font-size: 100%;
+
+  @include mq(pc) {
+    font-size: 80%;
+  }
+  @include mq(tab) {
+    font-size: 60%;
+  }
+  @include mq(sp) {
+    font-size: 40%;
+  }
+}
+
+body {
+  line-height: 1.8;
+  letter-spacing: 1px;
+  word-break: break-all;
+  background-color: $cBase;
+  color: $cText;
+}
+
+.__inner {
+  max-width: 1300px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+span {
+  display: inline-block;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: $cText;
+  text-decoration: none;
+}
+
+
+
+// ヘッダー
+.header {
+
+  &-wrap {
+    width: 80%;
+    @include flex(space-between);
+    height: clamp(3.125rem, 2.443rem + 3.41vw, 5rem);
+    
+    &__nav {
+      width: 100%;
+
+      &__list {
+        @include flex(left);
+
+        &__item {
+            margin-right: 8%;
+
+          a {
+            font-size: 1.5rem;
+            transition: $transition;
+            font-family: $en-font;
+            font-weight: 400;
+
+            &:hover {
+              color: $cYellow;
+            }
+          }
+        }
+      } 
+    }
+
+    &__sns {
+      width: 20%;
+
+      &__list {
+        @include flex(flex-end);
+
+        &__item {
+          margin-left: 8%;
+
+          a {
+            font-size: 2.25rem;
+            transition: $transition;
+
+            &:hover {
+              color: $cYellow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// トップ
+.top {
+
+  &-wrap {
+    background-color: $cYellow;
+    position: relative;
+    aspect-ratio: 5/3;
+    @include flex;
+
+    &__ttl {
+      position: absolute;
+      right: 50px;
+
+      &__tx {
+        color: white;
+        font-family: $en-font;
+        font-weight: 400;
+        font-size: 3rem;
+        line-height: 1.25;
+
+        span {
+          color: $cAccent;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+
+// about
+.about {
+  margin-top: $margin;
+
+  &-wrap {
+    background-color: $cPink;
+
+    &__con {
+      @include flex(center);
+      height: 100%;
+      padding: 80px 30px 80px 50px;
+
+      @include mq(tab) {
+        flex-direction: column;
+        padding: 30px;
+
+        &__ttl {
+          margin-bottom: 10px;
+        }
+      }
+
+      &__ttl {
+        margin-right: 5%;
+
+        h3 {
+          font-size: 1.5rem;
+          font-family: $ja-font;
+        }
+      }
+
+      &__tx {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+// サービス
+.service {
+
+  &-wrap {
+    margin: $margin auto;
+
+    &__con {
+      @include flex(space-between);
+      max-width: 1000px;
+      margin: auto;
+
+
+      &__item {
+        width: 30%;
+        aspect-ratio: 1/1;
+        border: clamp(0.125rem, 0.102rem + 0.11vw, 0.188rem) solid $cAccent;
+        position: relative;
+
+        &__tx {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+
+          h4 {
+            font-size: 2.5rem;
+            font-family: $en-font__bold;
+            font-weight: 600;
+            text-align: center;
+            line-height: 4;
+            @include mq(tab) {
+                font-size: 2rem;
+                line-height: 3;
+              }
+            }
+
+            p {
+              padding: 0 1em;
+              font-size: 1rem;
+              font-family: $ja-font;
+              text-align: left;
+              display: inline-block;
+
+            }
+        }
+      }
+    }
+  }
+}
+
+// works
+.works {
+margin-bottom: $margin;
+  &-wrap {
+    background-color: $cWhite;
+    padding: clamp(0.625rem, -0.284rem + 4.55vw, 3.125rem) 0 $margin 0;
+
+    &__ttl {
+      font-family: $en-font__bold;
+      font-weight: 600;
+      font-size: 2.5rem;
+      text-align: center;
+      border-bottom: thick double;
+      color: $cAccent;
+      width: 90%;
+      margin: auto;
+    }
+
+    &__con {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      margin-top: 50px;
+      gap: 2rem;
+      width: 90%;
+      margin: 3rem auto 0;
+
+      &__item {
+        box-shadow: $box-shadow;
+
+        &__img {
+          padding: 1.5rem 1.5rem 0 1.5rem;
+          position: relative;
+
+          img {
+            @include img;
+          }
+
+          &__tag {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 2rem;
+
+            span {
+              background-color: $cWhite;
+              font-family: $ja-font;
+              font-weight: bold;
+              font-size: 1rem;
+              border: 2px solid $cAccent;
+              border-radius: 7px;
+              padding: 0 0.5rem;
+
+            }
+          }
+        }
+
+        &__ttl {
+          font-size: 1.5rem;
+          font-family: $ja-font;
+          font-weight:bold;
+          line-height: 3;
+          text-align: center;
+        }
+      }
+
+    }
+  }
+}
+
+
+// お問い合わせ
+.contact {
+  background-color: $cYellow;
+  overflow: hidden;
+  
+  &-wrap {
+    margin-top: $margin;
+
+    &__con {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      margin-bottom: $margin;
+      @include mq(tab) {
+          flex-direction: column;
+        }
+
+      &__ttl {
+        width: 40%;
+
+        &__tx {
+            width: 70%;
+            aspect-ratio: 1/1;
+            border: clamp(0.125rem, 0.102rem + 0.11vw, 0.188rem) solid $cAccent;
+            border-radius: 100%;
+            vertical-align: middle;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+
+          h2 {
+            font-family: $en-font__bold;
+            font-weight: 600;
+            font-size: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+
+            span {
+              font-size: 1.5rem;
+              font-family: $ja-font;
+              line-height: 0;
+            }
+          }
+        }
+      }
+
+      &__form {
+        width: 60%;
+        @include mq(tab) {
+            width: 100%;
+          }
+
+        &__item {
+
+
+          label {
+            display: block;
+            color: $cAccent;
+            padding-bottom: 0.5%;
+            font-size: 1.5rem;
+            font-family: $ja-font;
+            font-weight: bold;
+            padding-top: 2rem;
+          }
+
+          input {
+            width: 100%;
+            height: 3rem;
+            border: unset;
+            font-size: 1.25rem;
+            box-sizing: border-box;
+          }
+
+          textarea {
+            width: 100%;
+            height: 16rem;
+            border: unset;
+            font-size: 1.25rem;
+            box-sizing: border-box;
+          }
+        }
+
+        &__btn {
+          width: 115px;
+          margin: 0 auto;
+          background-color: $cAccent;
+          border-radius: 10px;
+          margin-top: 5rem;
+
+          button {
+            width: 100%;
+            cursor: pointer;
+            font-size: 1.25rem;
+            color: $cWhite;
+            border: unset;
+            background-color: unset;
+            line-height: 3;
+            letter-spacing: 0.3rem;
+
+            &:hover {
+              background-color: #EA667D;
+              border-radius: 10px;
+            }
+          }
+        }
+      }      
+
+    }
+
+  }
+}
+
+
+// フッター
+.footer {
+  padding: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem) 0;
+
+  &-wrap {
+
+    &__right {
+      display: block;
+      text-align: center;
+    }
+  }
+}
